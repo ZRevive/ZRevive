@@ -1,0 +1,809 @@
+<Profile name="User" version="13">
+    <ActionSet name="Generic" actionSetType="" radialMenuNavigation="Right">
+        <Action name="HostSpectator">
+            <Trigger>Alt+Period</Trigger>
+        </Action>
+        <Action name="Reply">
+            <Trigger>Backspace</Trigger>
+        </Action>
+        <Action name="TogglePerformance">
+            <Trigger>Alt_Left+F</Trigger>
+            <Trigger>Alt_Right+F</Trigger>
+        </Action>
+        <Action name="Screenshot">
+            <Trigger>Control+F9</Trigger>
+        </Action>
+        <Action name="ToggleMouse" version="4">
+            <Trigger>Minus</Trigger>
+        </Action>
+        <Action name="OpenMap" version="5">
+            <Trigger>M</Trigger>
+            <Trigger>Gamepad_1_Button_Pov0Right</Trigger>
+        </Action>
+        <Action name="ToggleVehicleSelect" version="5">
+            <Trigger>V</Trigger>
+        </Action>
+        <Action name="ToggleHostPanel" version="5">
+            <Trigger>O</Trigger>
+            <Trigger>Gamepad_1_Button_Pov0Left</Trigger>
+        </Action>
+        <Action name="VoiceVolumeUp">
+            <Trigger>KP_Add</Trigger>
+        </Action>
+        <Action name="VoiceVolumeDown">
+            <Trigger>KP_Subtract</Trigger>
+        </Action>
+        <Action name="VoiceVolumeMute">
+            <Trigger>KP_Enter</Trigger>
+        </Action>
+        <Action name="VoiceChatProximity">
+            <Trigger>KP_4</Trigger>
+            <Trigger>Mouse_2</Trigger>
+        </Action>
+        <Action name="VoiceChatGuild" version="2" />
+        <Action name="VoiceChatGroup" version="1">
+            <Trigger>KP_1</Trigger>
+        </Action>
+        <Action name="VoiceChatCustom" version="1">
+            <Trigger>KP_7</Trigger>
+        </Action>
+        <Action name="ToggleMuteVoice" version="4">
+            <Trigger>Alt+M</Trigger>
+        </Action>
+        <Action name="VoiceMacro" version="2">
+            <Trigger>PageDown</Trigger>
+        </Action>
+        <Action name="ToggleNetworkStats">
+            <Trigger>N</Trigger>
+        </Action>
+        <Action name="ToggleUI">
+            <Trigger>Control+F10</Trigger>
+        </Action>
+        <Action name="StartImageCapture">
+            <Trigger>Control+F12</Trigger>
+        </Action>
+        <Action name="ToggleVideoCapture">
+            <Trigger>PageUp</Trigger>
+        </Action>
+        <Action name="ToggleHudIndicators" version="2">
+            <Trigger>Control+H</Trigger>
+        </Action>
+        <Action name="ToggleSpectateChat">
+            <Trigger>Alt+P</Trigger>
+        </Action>
+        <Action name="ToggleInventory">
+            <Trigger>Tab</Trigger>
+            <Trigger>I</Trigger>
+            <Trigger>Gamepad_1_Button_13</Trigger>
+        </Action>
+        <Action name="ToggleCamera" version="1">
+            <Trigger>T</Trigger>
+        </Action>
+        <Action name="ToggleMuteAll">
+            <Trigger>Control+M</Trigger>
+        </Action>
+        <Action name="PointAndMute">
+            <Trigger>Control+T</Trigger>
+        </Action>
+        <Action name="DecreaseRenderDistance">
+            <Trigger>Bracket_Left</Trigger>
+        </Action>
+        <Action name="IncreaseRenderDistance">
+            <Trigger>Bracket_Right</Trigger>
+        </Action>
+        <Action name="ToggleStayTogetherOptIn" version="2">
+            <Trigger>O</Trigger>
+        </Action>
+        <Action name="ToggleInMatchChallenges">
+            <Trigger>U</Trigger>
+        </Action>
+    </ActionSet>
+    <ActionSet name="QuickChat" actionSetType="" radialMenuNavigation="Right">
+        <Action name="QuickChat1" />
+        <Action name="QuickChat2" />
+        <Action name="QuickChat3" />
+        <Action name="QuickChat4" />
+        <Action name="QuickChat5" />
+        <Action name="QuickChat6" />
+        <Action name="QuickChat7" />
+        <Action name="QuickChat8" />
+        <Action name="QuickChat9" />
+        <Action name="QuickChat10" />
+    </ActionSet>
+    <ActionSet name="Emotes" actionSetType="" radialMenuNavigation="Right">
+        <Action name="Agree" />
+        <Action name="Applause" />
+        <Action name="Beckon" />
+        <Action name="BirdCannon" />
+        <Action name="BootySlap" />
+        <Action name="CrotchChop" />
+        <Action name="CryBaby" />
+        <Action name="CutThroat" />
+        <Action name="DanceA" />
+        <Action name="DoubleBird" />
+        <Action name="Grind" />
+        <Action name="HandsUp" />
+        <Action name="Laugh" />
+        <Action name="No" />
+        <Action name="NoWay" />
+        <Action name="PelvicThrust" />
+        <Action name="Point" />
+        <Action name="Salute" />
+        <Action name="SarcasmDance" />
+        <Action name="ScrewYou2" />
+        <Action name="ShimmyDance" />
+        <Action name="TeaBag" />
+        <Action name="WaveBye" />
+        <Action name="WaveHello" />
+        <Action name="WaveHelloB" />
+        <Action name="WereNotWorthy" />
+        <Action name="Beg" />
+        <Action name="Fisticuffs" />
+        <Action name="Flex" />
+        <Action name="Hump" />
+        <Action name="FlexPoint" />
+        <Action name="ListenToTheCrowd" />
+        <Action name="AirGuitar" />
+        <Action name="BasicSalute" />
+        <Action name="BlowKiss" />
+        <Action name="Bow" />
+        <Action name="ButtScratchSniff" />
+        <Action name="Cheer" />
+        <Action name="Cold" />
+        <Action name="Confused" />
+        <Action name="Crazy" />
+        <Action name="Cry" />
+        <Action name="Curse" />
+        <Action name="Curtsey" />
+        <Action name="Doh" />
+        <Action name="FingerWaggle" />
+        <Action name="FistPump" />
+        <Action name="Frustrated" />
+        <Action name="Flustered" />
+        <Action name="GetAttention" />
+        <Action name="Glare" />
+        <Action name="HandBeckon" />
+        <Action name="HappyDance" />
+        <Action name="Hot" />
+        <Action name="IsItRaining" />
+        <Action name="JumpHooray" />
+        <Action name="Loser" />
+        <Action name="LookAway" />
+        <Action name="Listen" />
+        <Action name="Moon" />
+        <Action name="Neener" />
+        <Action name="Orate" />
+        <Action name="Pout" />
+        <Action name="Ponder" />
+        <Action name="Peer" />
+        <Action name="RoyalWave" />
+        <Action name="RudeSlap" />
+        <Action name="Sad" />
+        <Action name="Scold" />
+        <Action name="ScrewYouA" />
+        <Action name="Scream" />
+        <Action name="ShakeFist" />
+        <Action name="ShakeHead" />
+        <Action name="Shame" />
+        <Action name="ShieldEyes" />
+        <Action name="ShiverDownSpine" />
+        <Action name="ShrugDance" />
+        <Action name="Sigh" />
+        <Action name="SingleFingerWaggle" />
+        <Action name="Sniff" />
+        <Action name="Stretch" />
+        <Action name="Square" />
+        <Action name="Sulk" />
+        <Action name="SwearOath" />
+        <Action name="TeaBagB" />
+        <Action name="TapFoot" />
+        <Action name="TeabagLight" />
+        <Action name="Threaten" />
+        <Action name="Thanks" />
+        <Action name="ThumbsDown" />
+        <Action name="ThumbsUp" />
+        <Action name="Victory" />
+        <Action name="Violin" />
+        <Action name="Whistle" />
+        <Action name="Wave" />
+        <Action name="Wince" />
+        <Action name="WooHoo" />
+    </ActionSet>
+    <ActionSet name="EmoteSlots" actionSetType="" radialMenuNavigation="Right">
+        <Action name="Emote01" version="1">
+            <Trigger>F1</Trigger>
+        </Action>
+        <Action name="Emote02" version="1">
+            <Trigger>F2</Trigger>
+        </Action>
+        <Action name="Emote03" version="1">
+            <Trigger>F3</Trigger>
+        </Action>
+        <Action name="Emote04" version="1">
+            <Trigger>F4</Trigger>
+        </Action>
+        <Action name="Emote05" version="1">
+            <Trigger>F5</Trigger>
+        </Action>
+        <Action name="Emote06" version="1">
+            <Trigger>F6</Trigger>
+        </Action>
+        <Action name="Emote07" version="1">
+            <Trigger>F7</Trigger>
+        </Action>
+        <Action name="Emote08" version="1">
+            <Trigger>F8</Trigger>
+        </Action>
+        <Action name="Emote09" version="1">
+            <Trigger>F9</Trigger>
+        </Action>
+        <Action name="Emote10" version="1">
+            <Trigger>F10</Trigger>
+        </Action>
+        <Action name="Emote11" version="1">
+            <Trigger>F11</Trigger>
+        </Action>
+        <Action name="Emote12" version="1">
+            <Trigger>F12</Trigger>
+        </Action>
+    </ActionSet>
+    <ActionSet name="GroundVehicle" actionSetType="" radialMenuNavigation="Right">
+        <Action name="CockpitFreelook" version="1">
+            <Trigger>Alt_Left</Trigger>
+        </Action>
+        <Action name="FlightModifier" version="1">
+            <Trigger>Control_Left</Trigger>
+        </Action>
+        <Action name="MoveForward">
+            <Trigger>W</Trigger>
+            <Trigger>Gamepad_1_Button_7</Trigger>
+        </Action>
+        <Action name="MoveBackward">
+            <Trigger>S</Trigger>
+            <Trigger>Gamepad_1_Button_4</Trigger>
+        </Action>
+        <Action name="MoveLeft">
+            <Trigger>A</Trigger>
+            <Trigger>Gamepad_1_Axis_LX-</Trigger>
+        </Action>
+        <Action name="MoveRight">
+            <Trigger>D</Trigger>
+            <Trigger>Gamepad_1_Axis_LX+</Trigger>
+        </Action>
+        <Action name="Handbrake">
+            <Trigger>Space</Trigger>
+            <Trigger>Gamepad_1_Button_5</Trigger>
+        </Action>
+        <Action name="YawLeft">
+            <Trigger>Left</Trigger>
+            <Trigger>Gamepad_1_Axis_LZ-</Trigger>
+        </Action>
+        <Action name="YawRight">
+            <Trigger>Right</Trigger>
+            <Trigger>Gamepad_1_Axis_LZ+</Trigger>
+        </Action>
+        <Action name="PitchUp">
+            <Trigger>Up</Trigger>
+            <Trigger>Gamepad_1_Axis_RZ-</Trigger>
+        </Action>
+        <Action name="PitchDown">
+            <Trigger>Down</Trigger>
+            <Trigger>Gamepad_1_Axis_RZ+</Trigger>
+        </Action>
+        <Action name="CruiseMaxSpeed">
+            <Trigger>Equals</Trigger>
+        </Action>
+        <Action name="Fire">
+            <Trigger>Mouse_0</Trigger>
+        </Action>
+        <Action name="SecondaryFire">
+            <Trigger>Mouse_1</Trigger>
+        </Action>
+        <Action name="Interact" version="2">
+            <Trigger>E</Trigger>
+            <Trigger>Gamepad_1_Button_0</Trigger>
+        </Action>
+        <Action name="OfferAcceptSeat" version="1">
+            <Trigger>Control+G</Trigger>
+        </Action>
+        <Action name="VoteKickYes" version="1">
+            <Trigger>Control+Y</Trigger>
+        </Action>
+        <Action name="VoteKickNo" version="1">
+            <Trigger>Control+N</Trigger>
+        </Action>
+        <Action name="ConsumeItem1" version="1">
+            <Trigger>Q</Trigger>
+            <Trigger>Gamepad_1_Button_Pov0Up</Trigger>
+        </Action>
+        <Action name="ConsumeItem2" version="2">
+            <Trigger>F</Trigger>
+            <Trigger>Gamepad_1_Button_Pov0Down</Trigger>
+        </Action>
+        <Action name="Deploy">
+            <Trigger>B</Trigger>
+        </Action>
+        <Action name="VehicleHeadLights">
+            <Trigger>L</Trigger>
+        </Action>
+        <Action name="VehicleMotorRun" version="2">
+            <Trigger>K</Trigger>
+            <Trigger>Gamepad_1_Button_3</Trigger>
+        </Action>
+        <Action name="Reload">
+            <Trigger>R</Trigger>
+        </Action>
+        <Action name="NextWeapon" version="2">
+            <Trigger>MouseWheelDown</Trigger>
+        </Action>
+        <Action name="PreviousWeapon" version="2">
+            <Trigger>MouseWheelUp</Trigger>
+        </Action>
+        <Action name="Slot1">
+            <Trigger>1</Trigger>
+        </Action>
+        <Action name="Slot2">
+            <Trigger>2</Trigger>
+        </Action>
+        <Action name="Slot3">
+            <Trigger>3</Trigger>
+        </Action>
+        <Action name="Slot4">
+            <Trigger>4</Trigger>
+        </Action>
+        <Action name="Slot5">
+            <Trigger>5</Trigger>
+        </Action>
+        <Action name="Slot6">
+            <Trigger>6</Trigger>
+        </Action>
+        <Action name="Afterburner">
+            <Trigger>Shift_Left</Trigger>
+            <Trigger>Shift_Right</Trigger>
+            <Trigger>Gamepad_1_Button_6</Trigger>
+        </Action>
+        <Action name="VehicleAbility">
+            <Trigger>X</Trigger>
+        </Action>
+        <Action name="VehicleHorn">
+            <Trigger>J</Trigger>
+            <Trigger>Gamepad_1_Button_1</Trigger>
+        </Action>
+        <Action name="ChangeSeat1">
+            <Trigger>Control+1</Trigger>
+        </Action>
+        <Action name="ChangeSeat2">
+            <Trigger>Control+2</Trigger>
+        </Action>
+        <Action name="ChangeSeat3">
+            <Trigger>Control+3</Trigger>
+        </Action>
+        <Action name="ChangeSeat4">
+            <Trigger>Control+4</Trigger>
+        </Action>
+        <Action name="ChangeSeat5">
+            <Trigger>Control+5</Trigger>
+        </Action>
+        <Action name="ChangeSeat6">
+            <Trigger>Control+6</Trigger>
+        </Action>
+        <Action name="ChangeSeat7">
+            <Trigger>Control+7</Trigger>
+        </Action>
+        <Action name="ChangeSeat8">
+            <Trigger>Control+8</Trigger>
+        </Action>
+        <Action name="ChangeSeat9">
+            <Trigger>Control+9</Trigger>
+        </Action>
+        <Action name="ChangeSeat10">
+            <Trigger>Control+0</Trigger>
+        </Action>
+        <Action name="Unstick">
+            <Trigger>Control+U</Trigger>
+        </Action>
+    </ActionSet>
+    <ActionSet name="Aircraft" actionSetType="" radialMenuNavigation="Right">
+        <Action name="MoveForward">
+            <Trigger>W</Trigger>
+        </Action>
+        <Action name="MoveBackward">
+            <Trigger>S</Trigger>
+            <Trigger>Gamepad_1_Axis_LY-</Trigger>
+        </Action>
+        <Action name="MoveLeft">
+            <Trigger>A</Trigger>
+            <Trigger>Gamepad_1_Axis_LX-</Trigger>
+        </Action>
+        <Action name="MoveRight">
+            <Trigger>D</Trigger>
+            <Trigger>Gamepad_1_Axis_LX+</Trigger>
+        </Action>
+        <Action name="MoveUp" version="4">
+            <Trigger>Space</Trigger>
+            <Trigger>Gamepad_1_Button_4</Trigger>
+        </Action>
+        <Action name="MoveDown" version="4">
+            <Trigger>Control_Left</Trigger>
+            <Trigger>Gamepad_1_Button_6</Trigger>
+        </Action>
+        <Action name="RollLeft">
+            <Trigger>Left</Trigger>
+            <Trigger>Gamepad_1_Axis_LZ-</Trigger>
+        </Action>
+        <Action name="RollRight">
+            <Trigger>Right</Trigger>
+            <Trigger>Gamepad_1_Axis_LZ+</Trigger>
+        </Action>
+        <Action name="PitchUp">
+            <Trigger>Up</Trigger>
+            <Trigger>Gamepad_1_Axis_RZ-</Trigger>
+        </Action>
+        <Action name="PitchDown">
+            <Trigger>Down</Trigger>
+            <Trigger>Gamepad_1_Axis_RZ+</Trigger>
+        </Action>
+        <Action name="AnalogThrottle" />
+        <Action name="CruiseMaxSpeed">
+            <Trigger>Equals</Trigger>
+        </Action>
+        <Action name="CockpitFreelook">
+            <Trigger>Alt_Left</Trigger>
+        </Action>
+        <Action name="CockpitLookLeft" />
+        <Action name="CockpitLookRight" />
+        <Action name="CockpitLookUp" />
+        <Action name="CockpitLookDown" />
+        <Action name="ChangeCamera">
+            <Trigger>T</Trigger>
+        </Action>
+        <Action name="Fire">
+            <Trigger>Mouse_0</Trigger>
+            <Trigger>Gamepad_1_Button_3</Trigger>
+        </Action>
+        <Action name="SecondaryFire">
+            <Trigger>Mouse_1</Trigger>
+            <Trigger>Gamepad_1_Button_1</Trigger>
+        </Action>
+        <Action name="Interact" version="2">
+            <Trigger>E</Trigger>
+        </Action>
+        <Action name="Deploy" version="2">
+            <Trigger>Control+Space</Trigger>
+        </Action>
+        <Action name="Reload">
+            <Trigger>R</Trigger>
+        </Action>
+        <Action name="NextWeapon">
+            <Trigger>MouseWheelUp</Trigger>
+            <Trigger>Gamepad_1_Button_5</Trigger>
+        </Action>
+        <Action name="PreviousWeapon">
+            <Trigger>MouseWheelDown</Trigger>
+            <Trigger>Gamepad_1_Button_7</Trigger>
+        </Action>
+        <Action name="Slot1">
+            <Trigger>1</Trigger>
+        </Action>
+        <Action name="Slot2">
+            <Trigger>2</Trigger>
+        </Action>
+        <Action name="Afterburner">
+            <Trigger>Shift_Left</Trigger>
+            <Trigger>Shift_Right</Trigger>
+        </Action>
+        <Action name="VehicleAbility">
+            <Trigger>X</Trigger>
+        </Action>
+        <Action name="Horn">
+            <Trigger>J</Trigger>
+        </Action>
+        <Action name="ChangeSeat1">
+            <Trigger>Control+1</Trigger>
+        </Action>
+        <Action name="ChangeSeat2">
+            <Trigger>Control+2</Trigger>
+        </Action>
+        <Action name="ChangeSeat3">
+            <Trigger>Control+3</Trigger>
+        </Action>
+        <Action name="ChangeSeat4">
+            <Trigger>Control+4</Trigger>
+        </Action>
+        <Action name="ChangeSeat5">
+            <Trigger>Control+5</Trigger>
+        </Action>
+        <Action name="ChangeSeat6">
+            <Trigger>Control+6</Trigger>
+        </Action>
+        <Action name="ChangeSeat7">
+            <Trigger>Control+7</Trigger>
+        </Action>
+        <Action name="ChangeSeat8">
+            <Trigger>Control+8</Trigger>
+        </Action>
+        <Action name="ChangeSeat9">
+            <Trigger>Control+9</Trigger>
+        </Action>
+        <Action name="ChangeSeat10">
+            <Trigger>Control+0</Trigger>
+        </Action>
+        <Action name="YawLeft">
+            <Trigger>Gamepad_1_Axis_RX-</Trigger>
+        </Action>
+        <Action name="YawRight">
+            <Trigger>Gamepad_1_Axis_RX+</Trigger>
+        </Action>
+    </ActionSet>
+    <ActionSet name="Infantry" actionSetType="" radialMenuNavigation="Right">
+        <Action name="MoveForward">
+            <Trigger>W</Trigger>
+            <Trigger>Up</Trigger>
+            <Trigger>Gamepad_1_Axis_LY-</Trigger>
+        </Action>
+        <Action name="MoveBackward">
+            <Trigger>S</Trigger>
+            <Trigger>Down</Trigger>
+            <Trigger>Gamepad_1_Axis_LY+</Trigger>
+        </Action>
+        <Action name="StrafeLeft">
+            <Trigger>A</Trigger>
+            <Trigger>Left</Trigger>
+            <Trigger>Gamepad_1_Axis_LX-</Trigger>
+        </Action>
+        <Action name="StrafeRight">
+            <Trigger>D</Trigger>
+            <Trigger>Right</Trigger>
+            <Trigger>Gamepad_1_Axis_LX+</Trigger>
+        </Action>
+        <Action name="TurnLeft">
+            <Trigger>Gamepad_1_Axis_LZ-</Trigger>
+        </Action>
+        <Action name="TurnRight">
+            <Trigger>Gamepad_1_Axis_LZ+</Trigger>
+        </Action>
+        <Action name="LookUp">
+            <Trigger>Gamepad_1_Axis_RZ-</Trigger>
+        </Action>
+        <Action name="LookDown">
+            <Trigger>Gamepad_1_Axis_RZ+</Trigger>
+        </Action>
+        <Action name="Jump">
+            <Trigger>Space</Trigger>
+            <Trigger>Gamepad_1_Button_1</Trigger>
+        </Action>
+        <Action name="SwapCamShoulder">
+            <Trigger>Control_Left</Trigger>
+        </Action>
+        <Action name="SeatChangeModifier">
+            <Trigger>Control_Right</Trigger>
+        </Action>
+        <Action name="CrouchToggle" version="1">
+            <Trigger>C</Trigger>
+            <Trigger>Gamepad_1_Button_11</Trigger>
+        </Action>
+        <Action name="ProneToggle" version="1">
+            <Trigger>Z</Trigger>
+        </Action>
+        <Action name="Sprint">
+            <Trigger>Shift_Left</Trigger>
+            <Trigger>Shift_Right</Trigger>
+            <Trigger>Gamepad_1_Button_10</Trigger>
+        </Action>
+        <Action name="ToggleWalk" />
+        <Action name="Interact" version="2">
+            <Trigger>E</Trigger>
+            <Trigger>Gamepad_1_Button_0</Trigger>
+        </Action>
+        <Action name="ConsumeItem1" version="1">
+            <Trigger>Q</Trigger>
+            <Trigger>Gamepad_1_Button_Pov0Up</Trigger>
+        </Action>
+        <Action name="ConsumeItem2" version="2">
+            <Trigger>F</Trigger>
+            <Trigger>Gamepad_1_Button_Pov0Down</Trigger>
+        </Action>
+        <Action name="InspectWeapon" version="1">
+            <Trigger>L</Trigger>
+        </Action>
+        <Action name="Reload">
+            <Trigger>R</Trigger>
+            <Trigger>Gamepad_1_Button_3</Trigger>
+        </Action>
+        <Action name="Slot1">
+            <Trigger>1</Trigger>
+        </Action>
+        <Action name="Slot2">
+            <Trigger>2</Trigger>
+        </Action>
+        <Action name="Slot3">
+            <Trigger>3</Trigger>
+        </Action>
+        <Action name="Slot4">
+            <Trigger>4</Trigger>
+        </Action>
+        <Action name="Slot5">
+            <Trigger>5</Trigger>
+        </Action>
+        <Action name="Slot6">
+            <Trigger>6</Trigger>
+        </Action>
+        <Action name="Slot7">
+            <Trigger>7</Trigger>
+        </Action>
+        <Action name="Slot8">
+            <Trigger>8</Trigger>
+        </Action>
+        <Action name="Slot9">
+            <Trigger>9</Trigger>
+        </Action>
+        <Action name="Slot10">
+            <Trigger>0</Trigger>
+        </Action>
+        <Action name="Fire">
+            <Trigger>Mouse_0</Trigger>
+            <Trigger>Gamepad_1_Button_7</Trigger>
+        </Action>
+        <Action name="SecondaryFire">
+            <Trigger>Mouse_1</Trigger>
+            <Trigger>Gamepad_1_Button_6</Trigger>
+        </Action>
+        <Action name="ToggleWeaponAttachment" />
+        <Action name="ToggleHideFp">
+            <Trigger>Control+F11</Trigger>
+        </Action>
+        <Action name="SwitchFireGroup" version="1">
+            <Trigger>X</Trigger>
+        </Action>
+        <Action name="NextWeapon" version="2">
+            <Trigger>MouseWheelDown</Trigger>
+            <Trigger>Gamepad_1_Button_2</Trigger>
+        </Action>
+        <Action name="PreviousWeapon" version="2">
+            <Trigger>MouseWheelUp</Trigger>
+        </Action>
+        <Action name="ToggleAutoRun">
+            <Trigger>Equals</Trigger>
+        </Action>
+        <Action name="Freelook">
+            <Trigger>Alt_Left</Trigger>
+            <Trigger>Gamepad_1_Button_5</Trigger>
+        </Action>
+    </ActionSet>
+    <ActionSet name="FreeFly" actionSetType="" radialMenuNavigation="Right">
+        <Action name="SpeedScalarUp">
+            <Trigger>Equals</Trigger>
+        </Action>
+        <Action name="SpeedScalarDown">
+            <Trigger>Minus</Trigger>
+        </Action>
+        <Action name="FreeLook">
+            <Trigger>Mouse_1</Trigger>
+        </Action>
+        <Action name="MoveUp">
+            <Trigger>Q</Trigger>
+        </Action>
+        <Action name="MoveDown">
+            <Trigger>Z</Trigger>
+        </Action>
+        <Action name="Sprint">
+            <Trigger>Shift_Left</Trigger>
+            <Trigger>Shift_Right</Trigger>
+        </Action>
+        <Action name="IgnoreCollision">
+            <Trigger>Control</Trigger>
+        </Action>
+        <Action name="FreeformTranslation">
+            <Trigger>T</Trigger>
+        </Action>
+        <Action name="FreeformRotation">
+            <Trigger>R</Trigger>
+        </Action>
+        <Action name="FreeformScale">
+            <Trigger>Y</Trigger>
+        </Action>
+        <Action name="TurnLeft" />
+        <Action name="TurnRight" />
+        <Action name="LookUp" />
+        <Action name="LookDown" />
+        <Action name="MoveForward">
+            <Trigger>Up</Trigger>
+            <Trigger>W</Trigger>
+        </Action>
+        <Action name="MoveBackward">
+            <Trigger>Down</Trigger>
+            <Trigger>S</Trigger>
+        </Action>
+        <Action name="StrafeLeft">
+            <Trigger>Left</Trigger>
+            <Trigger>A</Trigger>
+        </Action>
+        <Action name="StrafeRight">
+            <Trigger>Right</Trigger>
+            <Trigger>D</Trigger>
+        </Action>
+    </ActionSet>
+    <ActionSet name="Spectator" actionSetType="" radialMenuNavigation="Right">
+        <Action name="Cam1">
+            <Trigger>6</Trigger>
+        </Action>
+        <Action name="Cam2">
+            <Trigger>9</Trigger>
+        </Action>
+        <Action name="Cam3">
+            <Trigger>7</Trigger>
+        </Action>
+        <Action name="Cam4">
+            <Trigger>1</Trigger>
+        </Action>
+        <Action name="Cam5">
+            <Trigger>2</Trigger>
+        </Action>
+        <Action name="Cam6">
+            <Trigger>3</Trigger>
+        </Action>
+        <Action name="Cam7">
+            <Trigger>4</Trigger>
+        </Action>
+        <Action name="Cam8">
+            <Trigger>5</Trigger>
+        </Action>
+        <Action name="Cam9">
+            <Trigger>8</Trigger>
+        </Action>
+        <Action name="CamZoomIn">
+            <Trigger>MouseWheelUp</Trigger>
+        </Action>
+        <Action name="CamZoomOut">
+            <Trigger>MouseWheelDown</Trigger>
+        </Action>
+        <Action name="CamDistanceOnMouseWheel">
+            <Trigger>Shift_Left</Trigger>
+            <Trigger>Shift_Right</Trigger>
+        </Action>
+        <Action name="CamLock">
+            <Trigger>Mouse_0</Trigger>
+        </Action>
+        <Action name="CamUnlock">
+            <Trigger>Mouse_1</Trigger>
+        </Action>
+        <Action name="NextTarget">
+            <Trigger>E</Trigger>
+        </Action>
+        <Action name="PrevTarget">
+            <Trigger>Q</Trigger>
+        </Action>
+        <Action name="ClosestTarget">
+            <Trigger>R</Trigger>
+        </Action>
+        <Action name="CamNudgeLeft">
+            <Trigger>Z</Trigger>
+        </Action>
+        <Action name="CamNudgeRight">
+            <Trigger>C</Trigger>
+        </Action>
+        <Action name="ToggleVsUi">
+            <Trigger>V</Trigger>
+        </Action>
+        <Action name="ToggleVsGroupUi">
+            <Trigger>G</Trigger>
+        </Action>
+        <Action name="ToggleFullBodyShaders">
+            <Trigger>F</Trigger>
+        </Action>
+        <Action name="CycleNamesOnNameplates">
+            <Trigger>B</Trigger>
+        </Action>
+    </ActionSet>
+    <ActionSet name="ProjectileDebugRecorder" actionSetType="" radialMenuNavigation="Right">
+        <Action name="CyclePrev">
+            <Trigger>KP_4</Trigger>
+        </Action>
+        <Action name="CycleNext">
+            <Trigger>KP_6</Trigger>
+        </Action>
+        <Action name="ToggleRender">
+            <Trigger>KP_5</Trigger>
+        </Action>
+    </ActionSet>
+</Profile>
