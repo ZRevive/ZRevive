@@ -1,0 +1,5 @@
+# Release payloads are verified byte for byte against sha256 in manifest.json.
+# Git's line-ending conversion silently rewrote them on commit (ClientConfig.ini
+# went 1602 -> 1522 bytes), which made every hash check fail. Treat everything
+# under assets/ as binary so what is published is exactly what was hashed.
+assets/** -text -diff
