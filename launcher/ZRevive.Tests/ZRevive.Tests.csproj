@@ -1,0 +1,52 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!--
+    Plain console test runner: the launcher deliberately has no test-framework NuGet
+    dependency, so this project compiles the (WPF-free) install sources directly and
+    asserts against them. Exit code 0 = all green.
+
+        dotnet run (project launcher\ZRevive.Tests) -c Release
+  -->
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net9.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <AssemblyName>ZRevive.Tests</AssemblyName>
+    <RootNamespace>ZRevive.Launcher.Tests</RootNamespace>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- Settings.cs stores the sign-in key with DPAPI; same version as the launcher. -->
+    <PackageReference Include="System.Security.Cryptography.ProtectedData" Version="9.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="Tests.cs" />
+    <Compile Include="..\ZRevive\Install\PathSafety.cs" Link="Install\PathSafety.cs" />
+    <Compile Include="..\ZRevive\Install\ReleaseManifest.cs" Link="Install\ReleaseManifest.cs" />
+    <Compile Include="..\ZRevive\Install\FileHasher.cs" Link="Install\FileHasher.cs" />
+    <Compile Include="..\ZRevive\Install\SteamLocator.cs" Link="Install\SteamLocator.cs" />
+    <Compile Include="..\ZRevive\Install\BaseBuilder.cs" Link="Install\BaseBuilder.cs" />
+    <Compile Include="..\ZRevive\Install\InstallState.cs" Link="Install\InstallState.cs" />
+    <Compile Include="..\ZRevive\Install\Downloader.cs" Link="Install\Downloader.cs" />
+    <Compile Include="..\ZRevive\Install\InstallService.cs" Link="Install\InstallService.cs" />
+    <Compile Include="..\ZRevive\Install\ForeignBaseline.cs" Link="Install\ForeignBaseline.cs" />
+    <Compile Include="..\ZRevive\Install\ManifestFetcher.cs" Link="Install\ManifestFetcher.cs" />
+    <Compile Include="..\ZRevive\Install\QuickVerify.cs" Link="Install\QuickVerify.cs" />
+    <Compile Include="..\ZRevive\Install\ZrPatch.cs" Link="Install\ZrPatch.cs" />
+    <Compile Include="UpdateTests.cs" />
+    <Compile Include="..\ZRevive\GameLauncher.cs" Link="GameLauncher.cs" />
+    <!-- GameLauncher.Launch refuses without this, so it has to compile here too. -->
+    <Compile Include="..\ZRevive\SecurityGate.cs" Link="SecurityGate.cs" />
+    <!-- PortalClient sends the device fingerprint with every sign-in. -->
+    <Compile Include="..\ZRevive\MachineId.cs" Link="MachineId.cs" />
+    <Compile Include="..\ZRevive\PortalClient.cs" Link="PortalClient.cs" />
+    <Compile Include="..\ZRevive\Settings.cs" Link="Settings.cs" />
+    <Compile Include="..\ZRevive\Install\LauncherUpdate.cs" Link="Install\LauncherUpdate.cs" />
+    <Compile Include="ModeTests.cs" />
+  </ItemGroup>
+
+</Project>
+

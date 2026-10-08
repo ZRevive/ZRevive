@@ -45,6 +45,25 @@ do not own the game, nothing builds — on purpose.
 
 See [NOTICE.md](NOTICE.md) for the full statement, including how to reach us for a takedown.
 
+## The launcher's source
+
+`launcher/` is the full source of the `ZRevive.exe` you download — the installer, the updater,
+the Steam sign-in, the file verification and the UI. You can read exactly what it does to your
+PC, and what it does not.
+
+In short: it locates your *Z1 Battle Royale* install, copies it to a separate folder, applies
+patches to that copy, and launches it. It never writes to your Steam copy, and it never uploads
+anything from your machine.
+
+```
+launcher/ZRevive/          the launcher (C#, WPF, .NET 9)
+launcher/ZRevive/Install/  install, verify, patch and self-update
+launcher/ZRevive.Tests/    373 tests, no network and no game needed to run them
+```
+
+Values that belong to one deployment rather than to the source — see `Branding.cs` — are supplied
+at build time and are not committed, so a clean clone may need them before everything builds.
+
 ## Licence
 
 Our own code is **GPL-3.0** (see [LICENSE](LICENSE)). The login server derives from

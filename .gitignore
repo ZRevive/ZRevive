@@ -1,0 +1,18 @@
+# Build output
+bin/
+obj/
+*.user
+*.suo
+.vs/
+
+# Local deployment configuration: values that belong to one deployment rather than to the source.
+# Never commit these.
+Local.props
+config/
+*.env
+.env
+OWNER-KEY.txt
+
+# Logs and local state
+logs/
+*.log

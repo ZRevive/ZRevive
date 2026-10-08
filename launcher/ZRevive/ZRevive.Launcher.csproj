@@ -1,0 +1,52 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!-- Deployment configuration that is deliberately NOT in the public repository (see Branding.cs).
+       Local.props is gitignored; the release build can also pass -p:DiscordAppId=... instead. A clean
+       clone has neither and simply builds without those features. -->
+  <Import Project="Local.props" Condition="Exists('Local.props')" />
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net9.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <AssemblyName>ZRevive</AssemblyName>
+    <RootNamespace>ZRevive.Launcher</RootNamespace>
+    <ApplicationIcon>Assets\zrevive.ico</ApplicationIcon>
+    <!-- MUST be bumped with every release tag. LauncherUpdate compares this against the
+         manifest's requiredLauncher, so a stale value makes the newest launcher believe it is
+         out of date and prompt for an update it already has - forever. -->
+    <!-- 0.4.6 and 0.4.7 were asset-only releases: the SAME 0.4.5 binary was re-uploaded to each
+         tag so releases/latest/download/ZRevive.exe kept working. 0.4.8 is the first new launcher
+         since 0.4.5 - it adds the Secure Boot / Memory integrity gate and the device fingerprint
+         a ban can follow. -->
+    <!-- 0.4.9 and 0.4.10 were asset-only (the pickup-prompt strings, then a corrupt asset
+         re-uploaded): both re-shipped the 0.4.8 binary. 0.4.11 is a real launcher fix - a button
+         reading UPDATE could start the game instead of updating. -->
+    <Version>0.4.11</Version>
+    <Product>ZRevive Launcher</Product>
+    <Company>ZRevive</Company>
+    <!-- Shown in Explorer's Properties and in the SmartScreen prompt. The exe is not code
+         signed, so these strings are the only publisher information a player gets - a blank
+         description there reads like something to delete. -->
+    <AssemblyTitle>ZRevive Launcher</AssemblyTitle>
+    <Description>Installs and launches ZRevive - H1Z1: King of the Kill, Preseason 5 gameplay, from your own Z1 Battle Royale install.</Description>
+    <Copyright>Free, non-commercial fan project. Not affiliated with Daybreak Game Company.</Copyright>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Resource Include="Assets\zrevive.png" />
+    <Resource Include="Assets\zrevive.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Security.Cryptography.ProtectedData" Version="9.0.0" />
+  </ItemGroup>
+
+  <!-- Baked into the assembly so the published launcher has it without the value living in source. -->
+  <ItemGroup Condition="'$(DiscordAppId)' != ''">
+    <AssemblyMetadata Include="DiscordAppId" Value="$(DiscordAppId)" />
+  </ItemGroup>
+
+</Project>

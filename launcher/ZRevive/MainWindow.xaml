@@ -1,0 +1,483 @@
+<Window x:Class="ZRevive.Launcher.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="ZRevive" Width="1120" Height="700" MinWidth="960" MinHeight="620"
+        WindowStartupLocation="CenterScreen" Background="{StaticResource Ink}"
+        Icon="pack://application:,,,/Assets/zrevive.ico"
+        WindowStyle="None" ResizeMode="CanResize">
+  <WindowChrome.WindowChrome>
+    <WindowChrome CaptionHeight="36" ResizeBorderThickness="6" GlassFrameThickness="0" CornerRadius="0"/>
+  </WindowChrome.WindowChrome>
+
+  <Border BorderBrush="{StaticResource Line}" BorderThickness="1">
+    <Grid>
+      <Grid.RowDefinitions>
+        <RowDefinition Height="36"/>
+        <RowDefinition Height="*"/>
+      </Grid.RowDefinitions>
+
+      <!-- ===== Title bar ===== -->
+      <Grid Background="{StaticResource Ink2}">
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="Auto"/>
+          <ColumnDefinition Width="*"/>
+          <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Orientation="Horizontal" Margin="12,0,0,0" VerticalAlignment="Center">
+          <Image Source="pack://application:,,,/Assets/zrevive.png" Width="20" Height="20" RenderOptions.BitmapScalingMode="HighQuality"/>
+          <TextBlock Text="ZREVIVE" Margin="8,0,0,0" FontFamily="{StaticResource Head}" FontWeight="Bold" FontSize="14" VerticalAlignment="Center"/>
+          <Rectangle Width="1" Height="14" Fill="{StaticResource Line2}" Margin="10,0"/>
+          <TextBlock Text="H1Z1 · KING OF THE KILL" FontFamily="{StaticResource Head}" FontSize="12" Foreground="{StaticResource Ash2}" VerticalAlignment="Center"/>
+        </StackPanel>
+        <TextBlock Grid.Column="1" x:Name="VersionText" Text="" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,10,0"
+                   FontSize="11" Foreground="{StaticResource Ash2}"/>
+        <StackPanel Grid.Column="2" Orientation="Horizontal" WindowChrome.IsHitTestVisibleInChrome="True">
+          <!-- Drawn, not typed: these were glyphs from "Segoe MDL2 Assets", and when that font
+               isn't resolved the window buttons render as empty boxes (seen on a player's PC).
+               A Path has no font dependency, so it looks the same everywhere. -->
+          <Button Style="{StaticResource Chrome}" Click="Min_Click" ToolTip="Minimize">
+            <Path Data="M 0,0 H 10" Stroke="{Binding Foreground, RelativeSource={RelativeSource AncestorType=Button}}"
+                  StrokeThickness="1" SnapsToDevicePixels="True"/>
+          </Button>
+          <Button Style="{StaticResource ChromeClose}" Click="Close_Click" ToolTip="Close">
+            <Path Data="M 0,0 L 9,9 M 9,0 L 0,9" Stroke="{Binding Foreground, RelativeSource={RelativeSource AncestorType=Button}}"
+                  StrokeThickness="1.2" SnapsToDevicePixels="True"/>
+          </Button>
+        </StackPanel>
+      </Grid>
+
+      <!-- ===== Body ===== -->
+      <Grid Grid.Row="1">
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="*"/>
+          <ColumnDefinition Width="380"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Left: hero + play + news -->
+        <Grid ClipToBounds="True">
+          <!-- backdrop layers -->
+          <Rectangle Fill="{StaticResource HeroBase}"/>
+          <Rectangle Fill="{StaticResource HeroGlow}"/>
+          <Rectangle Fill="{StaticResource Grain}"/>
+          <Image Source="pack://application:,,,/Assets/zrevive.png" Width="520" Height="520" Opacity="0.07"
+                 HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,-90,-120,0"
+                 RenderOptions.BitmapScalingMode="HighQuality"/>
+          <Rectangle Fill="{StaticResource HeroFade}"/>
+
+          <Grid Margin="36,28,36,24">
+            <Grid.RowDefinitions>
+              <RowDefinition Height="Auto"/>
+              <RowDefinition Height="Auto"/>
+              <RowDefinition Height="Auto"/>
+              <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <!-- Headline -->
+            <StackPanel>
+              <StackPanel Orientation="Horizontal">
+                <Border Background="{StaticResource Red}" Width="4" Height="18" Margin="0,0,10,0"/>
+                <TextBlock Text="PRESEASON 5  ·  Z1 BATTLE ROYALE CLIENT" Style="{StaticResource SectionHead}" FontSize="13"/>
+              </StackPanel>
+              <TextBlock Text="KING OF" Style="{StaticResource Display}" Margin="0,10,0,0"/>
+              <TextBlock Text="THE KILL" Style="{StaticResource Display}" Foreground="{StaticResource RedHi}"/>
+              <TextBlock Text="The Preseason 5 experience, revived. Drop in, loot up, be the last one standing."
+                         Foreground="{StaticResource Ash}" FontSize="13" Margin="0,10,0,0" TextWrapping="Wrap" MaxWidth="440" HorizontalAlignment="Left"/>
+            </StackPanel>
+
+            <!-- Play row -->
+            <Grid Grid.Row="1" Margin="0,24,0,0">
+              <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+              </Grid.ColumnDefinitions>
+              <StackPanel>
+                <Button x:Name="PlayBtn" Style="{StaticResource PlayBtn}" Click="Play_Click" IsEnabled="False" HorizontalAlignment="Left">
+                  <StackPanel Orientation="Horizontal">
+                    <Path Data="M0,0 L14,8 L0,16 Z" Fill="White" Width="14" Height="16" Stretch="Fill" VerticalAlignment="Center" Margin="0,0,14,0"/>
+                    <TextBlock x:Name="PlayLabel" Text="PLAY" FontFamily="{StaticResource Head}" FontWeight="Bold" FontSize="28" Foreground="White" VerticalAlignment="Center"/>
+                  </StackPanel>
+                </Button>
+                <TextBlock x:Name="PlayStatus" Foreground="{StaticResource Ash}" Margin="2,8,0,0" TextWrapping="Wrap" FontSize="12" MaxWidth="300" HorizontalAlignment="Left"/>
+              </StackPanel>
+
+              <!-- Server status card -->
+              <Border Grid.Column="1" Style="{StaticResource Card}" Margin="20,0,0,0" VerticalAlignment="Top" Padding="16,12">
+                <Grid>
+                  <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                  </Grid.ColumnDefinitions>
+                  <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                  </Grid.RowDefinitions>
+                  <Ellipse x:Name="StatusDot" Width="10" Height="10" Fill="{StaticResource Red}" VerticalAlignment="Center" Margin="0,0,10,0">
+                    <Ellipse.Effect>
+                      <DropShadowEffect BlurRadius="8" ShadowDepth="0" Color="#E1262C" Opacity="0.8"/>
+                    </Ellipse.Effect>
+                  </Ellipse>
+                  <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                    <TextBlock x:Name="StatusText" Text="Checking server…" FontFamily="{StaticResource Head}" FontWeight="SemiBold" FontSize="15"/>
+                    <TextBlock x:Name="StatusSub" Foreground="{StaticResource Ash2}" FontSize="11" TextTrimming="CharacterEllipsis"/>
+                  </StackPanel>
+                  <Button Grid.Column="2" Content="REFRESH" Style="{StaticResource Btn}" Padding="10,5" FontSize="11" Click="Refresh_Click" VerticalAlignment="Center"/>
+
+                  <UniformGrid Grid.Row="1" Grid.ColumnSpan="3" Columns="3" Margin="0,12,0,0">
+                    <StackPanel>
+                      <TextBlock x:Name="StatOnline" Text="—" Style="{StaticResource StatValue}"/>
+                      <TextBlock Text="IN GAME" Style="{StaticResource StatCaption}"/>
+                    </StackPanel>
+                    <StackPanel>
+                      <TextBlock x:Name="StatCapacity" Text="—" Style="{StaticResource StatValue}"/>
+                      <TextBlock Text="SERVER SLOTS" Style="{StaticResource StatCaption}"/>
+                    </StackPanel>
+                    <StackPanel>
+                      <TextBlock x:Name="StatSurvivors" Text="—" Style="{StaticResource StatValue}"/>
+                      <TextBlock Text="SURVIVORS" Style="{StaticResource StatCaption}"/>
+                    </StackPanel>
+                  </UniformGrid>
+                </Grid>
+              </Border>
+            </Grid>
+
+            <!-- News header -->
+            <Grid Grid.Row="2" Margin="0,26,0,0">
+              <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+              </Grid.ColumnDefinitions>
+              <StackPanel Orientation="Horizontal">
+                <Border Background="{StaticResource Red}" Width="4" Height="16" Margin="0,0,10,0"/>
+                <TextBlock Text="NEWS &amp; PATCH NOTES" Style="{StaticResource SectionHead}"/>
+              </StackPanel>
+              <Rectangle Grid.Column="1" Height="1" Fill="{StaticResource Line}" Margin="14,0" VerticalAlignment="Center"/>
+              <Button Grid.Column="2" x:Name="SiteBtn" Content="OPEN WEBSITE" Style="{StaticResource Link}" FontFamily="{StaticResource Head}" FontSize="12" Click="Site_Click"/>
+            </Grid>
+
+            <!-- News list -->
+            <ScrollViewer Grid.Row="3" Margin="0,12,0,0" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+              <ItemsControl x:Name="NewsList" Margin="0,0,8,0">
+                <ItemsControl.ItemTemplate>
+                  <DataTemplate>
+                    <Border Style="{StaticResource Card}" Margin="0,0,0,8" Padding="14,10">
+                      <Grid>
+                        <Grid.ColumnDefinitions>
+                          <ColumnDefinition Width="Auto"/>
+                          <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Border Background="{StaticResource Ink}" BorderBrush="{StaticResource Line2}" BorderThickness="1" CornerRadius="2"
+                                Padding="8,4" VerticalAlignment="Top" Margin="0,2,12,0" MinWidth="64">
+                          <TextBlock Text="{Binding Date}" FontFamily="{StaticResource Head}" FontWeight="Bold" FontSize="11"
+                                     Foreground="{StaticResource Ash}" HorizontalAlignment="Center"/>
+                        </Border>
+                        <StackPanel Grid.Column="1">
+                          <TextBlock Text="{Binding Title}" FontFamily="{StaticResource Head}" FontWeight="Bold" FontSize="15" TextWrapping="Wrap"/>
+                          <TextBlock Text="{Binding Body}" Foreground="{StaticResource Ash}" FontSize="12" TextWrapping="Wrap" Margin="0,3,0,0"/>
+                        </StackPanel>
+                      </Grid>
+                    </Border>
+                  </DataTemplate>
+                </ItemsControl.ItemTemplate>
+              </ItemsControl>
+            </ScrollViewer>
+          </Grid>
+        </Grid>
+
+        <!-- Right: account + settings -->
+        <Border Grid.Column="1" Background="{StaticResource Ink2}" BorderBrush="{StaticResource Line}" BorderThickness="1,0,0,0">
+          <Grid Margin="28,26,28,22">
+            <Grid.RowDefinitions>
+              <RowDefinition Height="Auto"/>
+              <RowDefinition Height="*"/>
+              <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <!-- Signed out -->
+            <StackPanel x:Name="LoginPanel">
+              <StackPanel Orientation="Horizontal">
+                <Border Background="{StaticResource Red}" Width="4" Height="16" Margin="0,0,10,0"/>
+                <TextBlock Text="ACCOUNT" Style="{StaticResource SectionHead}"/>
+              </StackPanel>
+              <TextBlock Text="SIGN IN" FontFamily="{StaticResource Head}" FontWeight="Bold" FontSize="30" Margin="0,8,0,0"/>
+              <TextBlock Text="Use the Steam account that has Z1 Battle Royale in its library." Foreground="{StaticResource Ash}"
+                         TextWrapping="Wrap" FontSize="12" Margin="0,4,0,16"/>
+
+              <Button x:Name="SteamBtn" Style="{StaticResource SteamBtn}" Padding="16,13" Click="Steam_Click">
+                <TextBlock Text="SIGN IN THROUGH STEAM" Foreground="{StaticResource SteamText}" FontFamily="{StaticResource Head}" FontWeight="Bold" FontSize="15"/>
+              </Button>
+
+              <Border x:Name="WaitBox" Visibility="Collapsed" Margin="0,12,0,0" BorderBrush="{StaticResource Red}" BorderThickness="1" Padding="14,12" Background="#14C4161C" CornerRadius="2">
+                <StackPanel>
+                  <TextBlock Text="Finish in your browser" FontWeight="SemiBold"/>
+                  <TextBlock Text="Confirm when the page shows this code:" Foreground="{StaticResource Ash}" FontSize="12" Margin="0,2,0,8"/>
+                  <TextBlock x:Name="CodeText" FontFamily="Consolas" FontSize="30" FontWeight="Bold" Foreground="White"/>
+                  <Button Content="Cancel" Style="{StaticResource Link}" HorizontalAlignment="Left" Margin="0,10,0,0" Click="CancelSteam_Click"/>
+                </StackPanel>
+              </Border>
+
+              <Button x:Name="KeyToggle" Content="Use an auth key instead" Style="{StaticResource Link}" HorizontalAlignment="Left" Margin="0,14,0,0" Click="KeyToggle_Click"/>
+              <StackPanel x:Name="KeyPanel" Visibility="Collapsed" Margin="0,10,0,0">
+                <TextBox x:Name="KeyBox" Style="{StaticResource Field}" FontFamily="Consolas" KeyDown="KeyBox_KeyDown"/>
+                <Button x:Name="KeyBtn" Content="SIGN IN WITH KEY" Style="{StaticResource Btn}" Margin="0,8,0,0" Click="KeySignIn_Click"/>
+              </StackPanel>
+
+              <TextBlock x:Name="LoginError" Foreground="{StaticResource RedHi}" TextWrapping="Wrap" Margin="0,12,0,0" FontSize="12"/>
+              <CheckBox x:Name="RememberBox" Content="Keep me signed in" IsChecked="True" Margin="0,14,0,0"/>
+            </StackPanel>
+
+            <!-- Signed in -->
+            <StackPanel x:Name="AccountPanel" Visibility="Collapsed">
+              <StackPanel Orientation="Horizontal">
+                <Border Background="{StaticResource Red}" Width="4" Height="16" Margin="0,0,10,0"/>
+                <TextBlock Text="ACCOUNT" Style="{StaticResource SectionHead}"/>
+              </StackPanel>
+              <Grid Margin="0,12,0,0">
+                <Grid.ColumnDefinitions>
+                  <ColumnDefinition Width="Auto"/>
+                  <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Border BorderBrush="{StaticResource Line2}" BorderThickness="1" Width="64" Height="64" CornerRadius="3" Background="{StaticResource Ink}">
+                  <Border CornerRadius="2" ClipToBounds="True">
+                    <Image x:Name="AvatarImg" Source="pack://application:,,,/Assets/zrevive.png" Stretch="UniformToFill"/>
+                  </Border>
+                </Border>
+                <StackPanel Grid.Column="1" Margin="14,0,0,0" VerticalAlignment="Center">
+                  <TextBlock x:Name="NameText" FontFamily="{StaticResource Head}" FontWeight="Bold" FontSize="24" TextTrimming="CharacterEllipsis"/>
+                  <StackPanel Orientation="Horizontal" Margin="0,4,0,0">
+                    <Border x:Name="RankBadge" BorderThickness="1" Padding="7,2" CornerRadius="2">
+                      <TextBlock x:Name="RankText" FontFamily="{StaticResource Head}" FontWeight="Bold" FontSize="11"/>
+                    </Border>
+                    <TextBlock x:Name="SteamText" Foreground="{StaticResource Ash2}" FontSize="12" Margin="10,0,0,0" VerticalAlignment="Center" TextTrimming="CharacterEllipsis"/>
+                  </StackPanel>
+                </StackPanel>
+              </Grid>
+
+              <!-- Crowns -->
+              <Border Style="{StaticResource Card}" Background="{StaticResource Ink}" Margin="0,14,0,0" Padding="14,10">
+                <Grid>
+                  <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                  </Grid.ColumnDefinitions>
+                  <Path Data="M2,16 L4,6 L9,11 L12,3 L15,11 L20,6 L22,16 Z M2,18 L22,18 L22,21 L2,21 Z" Fill="{StaticResource Gold}"
+                        Width="22" Height="20" Stretch="Uniform" VerticalAlignment="Center" Margin="0,0,12,0"/>
+                  <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                    <TextBlock x:Name="CrownsText" Text="—" FontFamily="{StaticResource Head}" FontWeight="Bold" FontSize="20" Foreground="{StaticResource Gold}"/>
+                    <TextBlock Text="CROWNS" Style="{StaticResource StatCaption}"/>
+                  </StackPanel>
+                  <Button Grid.Column="2" Content="STORE" Style="{StaticResource Btn}" Padding="12,5" FontSize="11" Click="Store_Click" VerticalAlignment="Center"
+                          ToolTip="Open the ZRevive store in your browser"/>
+                </Grid>
+              </Border>
+            </StackPanel>
+
+            <!-- Settings (always visible) -->
+            <StackPanel Grid.Row="1" Margin="0,26,0,0">
+              <StackPanel Orientation="Horizontal">
+                <Border Background="{StaticResource Red}" Width="4" Height="16" Margin="0,0,10,0"/>
+                <TextBlock Text="SETTINGS" Style="{StaticResource SectionHead}"/>
+              </StackPanel>
+
+              <TextBlock Text="GAME FOLDER" Style="{StaticResource Label}" Margin="0,14,0,0"/>
+              <Grid Margin="0,6,0,0">
+                <Grid.ColumnDefinitions>
+                  <ColumnDefinition Width="*"/>
+                  <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <TextBox x:Name="FolderBox" Style="{StaticResource Field}" FontSize="12" LostFocus="FolderBox_LostFocus"/>
+                <Button Grid.Column="1" Content="BROWSE" Style="{StaticResource Btn}" Margin="8,0,0,0" Padding="12,7" FontSize="12" Click="Browse_Click"/>
+              </Grid>
+              <TextBlock x:Name="FolderStatus" FontSize="12" Margin="0,6,0,0" TextWrapping="Wrap" Foreground="{StaticResource Ash2}"/>
+
+              <Grid Margin="0,8,0,0">
+                <Grid.ColumnDefinitions>
+                  <ColumnDefinition Width="*"/>
+                  <ColumnDefinition Width="8"/>
+                  <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Button Content="FAST VERIFY" Style="{StaticResource Btn}" Padding="10,6" FontSize="11" Click="FastVerify_Click"
+                        ToolTip="Quick check against the manifest: size and timestamps first, hashing only what looks changed"/>
+                <Button Grid.Column="2" Content="VERIFY / REPAIR" Style="{StaticResource Btn}" Padding="10,6" FontSize="11" Click="VerifyRepair_Click"
+                        ToolTip="Full check: hash every ZRevive file against the release manifest and re-download anything missing or wrong"/>
+              </Grid>
+              <Button Content="RE-RUN SETUP" Style="{StaticResource Btn}" Padding="10,6" FontSize="11" Margin="0,8,0,0" Click="RerunSetup_Click"
+                      ToolTip="Change the Steam folder or the ZRevive folder and rebuild the install"/>
+
+              <TextBlock Text="MODE" Style="{StaticResource Label}" Margin="0,16,0,0"/>
+              <Grid Margin="0,6,0,0">
+                <Grid.ColumnDefinitions>
+                  <ColumnDefinition Width="*"/>
+                  <ColumnDefinition Width="8"/>
+                  <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <RadioButton x:Name="ModeLiveBox" GroupName="ServerMode" Content="LIVE SERVERS" FontSize="11"
+                             Checked="Mode_Changed"
+                             ToolTip="Play on the public ZRevive servers"/>
+                <RadioButton x:Name="ModeLocalBox" Grid.Column="2" GroupName="ServerMode" Content="LOCAL (DEV)" FontSize="11"
+                             Checked="Mode_Changed"
+                             ToolTip="Play against a ZRevive stack running on this PC (START-SERVER.bat)"/>
+              </Grid>
+              <TextBlock x:Name="ModeHint" FontSize="11" Margin="0,6,0,0" TextWrapping="Wrap"
+                         Foreground="{StaticResource Ash2}"/>
+
+              <TextBlock x:Name="PortalLabel" Text="SERVER ADDRESS" Style="{StaticResource Label}" Margin="0,16,0,0"/>
+              <TextBox x:Name="PortalBox" Style="{StaticResource Field}" Margin="0,6,0,0" FontSize="12"/>
+
+              <TextBlock Text="UPDATE MANIFEST URL" Style="{StaticResource Label}" Margin="0,16,0,0"/>
+              <TextBox x:Name="ManifestBox" Style="{StaticResource Field}" Margin="0,6,0,0" FontSize="12"
+                       LostFocus="ManifestBox_LostFocus"
+                       ToolTip="Leave empty to use &lt;server address&gt;/assets/manifest.json"/>
+
+              <CheckBox x:Name="AutoUpdateBox" Content="Check for updates before playing" Margin="0,18,0,0"
+                        ToolTip="Fast-verifies the install and applies any new release before the game starts"/>
+
+              <CheckBox x:Name="DiscordBox" Content="Show Discord status" Margin="0,18,0,0"
+                        ToolTip="Show what you're doing in ZRevive on your Discord profile"/>
+            </StackPanel>
+
+            <!-- Bottom actions -->
+            <StackPanel Grid.Row="2">
+              <Grid x:Name="AccountActions" Visibility="Collapsed">
+                <Grid.ColumnDefinitions>
+                  <ColumnDefinition Width="*"/>
+                  <ColumnDefinition Width="8"/>
+                  <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Button x:Name="AdminBtn" Content="STAFF PANEL" Style="{StaticResource Btn}" Click="Admin_Click"/>
+                <Button Grid.Column="2" Content="SIGN OUT" Style="{StaticResource Btn}" Click="SignOut_Click"/>
+              </Grid>
+            </StackPanel>
+          </Grid>
+        </Border>
+      </Grid>
+
+      <!-- ===== First-run / install view (overlays the body) ===== -->
+      <Grid x:Name="InstallOverlay" Grid.Row="1" Panel.ZIndex="20" Visibility="Collapsed">
+        <Rectangle Fill="{StaticResource HeroBase}"/>
+        <Rectangle Fill="{StaticResource HeroGlow}"/>
+        <Rectangle Fill="{StaticResource Grain}"/>
+
+        <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+          <Border Style="{StaticResource Card}" Background="#F2151413" MaxWidth="760" Margin="40,34,40,34"
+                  Padding="34,28" VerticalAlignment="Center">
+            <StackPanel>
+              <StackPanel Orientation="Horizontal">
+                <Border Background="{StaticResource Red}" Width="4" Height="16" Margin="0,0,10,0"/>
+                <TextBlock x:Name="SetupStepLabel" Text="SETUP  ·  STEP 1 OF 3" Style="{StaticResource SectionHead}"/>
+              </StackPanel>
+              <TextBlock x:Name="SetupTitle" Text="FIND YOUR GAME" Style="{StaticResource Display}" FontSize="40" LineHeight="40" Margin="0,8,0,0"/>
+              <TextBlock x:Name="SetupBlurb" Foreground="{StaticResource Ash}" FontSize="13" TextWrapping="Wrap" Margin="0,8,0,0"
+                         Text="ZRevive needs the Z1 Battle Royale files you already own on Steam. Your Steam install is only ever read from — never changed."/>
+
+              <!-- Step 1: pick the Steam install -->
+              <StackPanel x:Name="Step1" Margin="0,20,0,0">
+                <TextBlock Text="DETECTED INSTALLS" Style="{StaticResource Label}"/>
+                <ItemsControl x:Name="FoundList" Margin="0,8,0,0">
+                  <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                      <RadioButton GroupName="Found" Style="{StaticResource PickRow}" IsEnabled="{Binding Valid}"
+                                   Tag="{Binding Folder}" Checked="Found_Checked">
+                        <StackPanel>
+                          <TextBlock Text="{Binding Folder}" FontSize="13" TextTrimming="CharacterEllipsis"/>
+                          <TextBlock Text="{Binding Caption}" Foreground="{StaticResource Ash2}" FontSize="11" Margin="0,2,0,0" TextWrapping="Wrap"/>
+                        </StackPanel>
+                      </RadioButton>
+                    </DataTemplate>
+                  </ItemsControl.ItemTemplate>
+                </ItemsControl>
+                <TextBlock x:Name="NoneFound" Visibility="Collapsed" Foreground="{StaticResource Ash}" FontSize="12" TextWrapping="Wrap"
+                           Text="No Z1 Battle Royale install found automatically. Install it from Steam, then browse to its folder below."/>
+
+                <TextBlock Text="OR CHOOSE THE FOLDER YOURSELF" Style="{StaticResource Label}" Margin="0,16,0,0"/>
+                <Grid Margin="0,6,0,0">
+                  <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                  </Grid.ColumnDefinitions>
+                  <TextBox x:Name="SourceBox" Style="{StaticResource Field}" FontSize="12" TextChanged="SourceBox_TextChanged"/>
+                  <Button Grid.Column="1" Content="BROWSE" Style="{StaticResource Btn}" Margin="8,0,0,0" Padding="12,7" FontSize="12" Click="BrowseSource_Click"/>
+                  <Button Grid.Column="2" Content="RESCAN" Style="{StaticResource Btn}" Margin="8,0,0,0" Padding="12,7" FontSize="12" Click="Rescan_Click"/>
+                </Grid>
+                <TextBlock x:Name="SourceStatus" FontSize="12" Margin="0,8,0,0" TextWrapping="Wrap" Foreground="{StaticResource Ash2}"/>
+              </StackPanel>
+
+              <!-- Step 2: pick the destination -->
+              <StackPanel x:Name="Step2" Visibility="Collapsed" Margin="0,20,0,0">
+                <TextBlock Text="ZREVIVE FOLDER" Style="{StaticResource Label}"/>
+                <Grid Margin="0,6,0,0">
+                  <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                  </Grid.ColumnDefinitions>
+                  <TextBox x:Name="TargetBox" Style="{StaticResource Field}" FontSize="12" TextChanged="TargetBox_TextChanged"/>
+                  <Button Grid.Column="1" Content="BROWSE" Style="{StaticResource Btn}" Margin="8,0,0,0" Padding="12,7" FontSize="12" Click="BrowseTarget_Click"/>
+                </Grid>
+                <TextBlock x:Name="TargetStatus" FontSize="12" Margin="0,8,0,0" TextWrapping="Wrap" Foreground="{StaticResource Ash2}"/>
+
+                <Border Style="{StaticResource Card}" Background="{StaticResource Ink}" Margin="0,16,0,0" Padding="14,12">
+                  <StackPanel>
+                    <CheckBox x:Name="HardlinkBox" Content="Save disk space with hardlinks (advanced)" Checked="Hardlink_Changed" Unchecked="Hardlink_Changed"/>
+                    <TextBlock Foreground="{StaticResource Ash2}" FontSize="11" TextWrapping="Wrap" Margin="27,6,0,0"
+                               Text="Off by default, and for good reason: a hardlinked file is the SAME bytes as the one in your Steam folder, so any tool that writes to it in place changes both installs. Only turn this on if disk space forces you to, and keep both folders on the same drive."/>
+                  </StackPanel>
+                </Border>
+              </StackPanel>
+
+              <!-- Problem step: the configured folder didn't validate. Never a forced re-setup. -->
+              <StackPanel x:Name="StepProblem" Visibility="Collapsed" Margin="0,20,0,0">
+                <Border Style="{StaticResource Card}" Background="#14C4161C" BorderBrush="{StaticResource Red}" Padding="16,14">
+                  <StackPanel>
+                    <TextBlock Text="WHAT'S WRONG" Style="{StaticResource Label}"/>
+                    <TextBlock x:Name="ProblemText" Foreground="{StaticResource Bone}" FontSize="13" TextWrapping="Wrap" Margin="0,6,0,0"/>
+                    <TextBlock x:Name="ProblemFolder" Foreground="{StaticResource Ash2}" FontSize="12" TextWrapping="Wrap" Margin="0,6,0,0"/>
+                  </StackPanel>
+                </Border>
+                <TextBlock Foreground="{StaticResource Ash}" FontSize="12" TextWrapping="Wrap" Margin="0,12,0,0"
+                           Text="Your saved ZRevive folder hasn't been changed. Pick what to do:"/>
+                <StackPanel Orientation="Horizontal" Margin="0,12,0,0">
+                  <Button Content="VERIFY / REPAIR" Style="{StaticResource Primary}" Click="VerifyRepair_Click"/>
+                  <Button Content="CHOOSE FOLDER" Style="{StaticResource Btn}" Margin="8,0,0,0" Click="ProblemChooseFolder_Click"/>
+                  <Button Content="FULL SETUP" Style="{StaticResource Btn}" Margin="8,0,0,0" Click="ProblemFullSetup_Click"/>
+                </StackPanel>
+              </StackPanel>
+
+              <!-- Step 3: build + download progress -->
+              <StackPanel x:Name="Step3" Visibility="Collapsed" Margin="0,20,0,0">
+                <TextBlock x:Name="ProgStage" Text="Preparing…" FontFamily="{StaticResource Head}" FontWeight="SemiBold" FontSize="16"/>
+                <TextBlock x:Name="ProgFile" Foreground="{StaticResource Ash2}" FontSize="12" Margin="0,4,0,0" TextTrimming="CharacterEllipsis"/>
+                <ProgressBar x:Name="ProgFileBar" Style="{StaticResource Bar}" Height="5" Margin="0,8,0,0"/>
+                <ProgressBar x:Name="ProgBar" Style="{StaticResource Bar}" Margin="0,8,0,0"/>
+                <Grid Margin="0,8,0,0">
+                  <TextBlock x:Name="ProgBytes" Foreground="{StaticResource Ash}" FontSize="12"/>
+                  <TextBlock x:Name="ProgSpeed" Foreground="{StaticResource Ash}" FontSize="12" HorizontalAlignment="Right"/>
+                </Grid>
+                <TextBlock x:Name="ProgLog" Foreground="{StaticResource Ash2}" FontSize="12" Margin="0,10,0,0" TextWrapping="Wrap"/>
+              </StackPanel>
+
+              <TextBlock x:Name="SetupError" Foreground="{StaticResource RedHi}" FontSize="12" TextWrapping="Wrap" Margin="0,14,0,0"/>
+
+              <!-- Actions -->
+              <Grid Margin="0,22,0,0">
+                <Grid.ColumnDefinitions>
+                  <ColumnDefinition Width="Auto"/>
+                  <ColumnDefinition Width="*"/>
+                  <ColumnDefinition Width="Auto"/>
+                  <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Button x:Name="SetupBackBtn" Content="BACK" Style="{StaticResource Btn}" Click="SetupBack_Click" Visibility="Collapsed"/>
+                <Button Grid.Column="1" x:Name="SkipOnceBtn" Content="Skip this update once" Style="{StaticResource Link}" Visibility="Collapsed"
+                        HorizontalAlignment="Left" Margin="16,0,0,0" VerticalAlignment="Center" Click="SkipOnce_Click"/>
+                <Button Grid.Column="2" x:Name="SetupCancelBtn" Content="CANCEL" Style="{StaticResource Btn}" Margin="0,0,8,0" Click="SetupCancel_Click"/>
+                <Button Grid.Column="3" x:Name="SetupNextBtn" Content="CONTINUE" Style="{StaticResource Primary}" Padding="26,10" Click="SetupNext_Click" IsEnabled="False"/>
+              </Grid>
+            </StackPanel>
+          </Border>
+        </ScrollViewer>
+      </Grid>
+    </Grid>
+  </Border>
+</Window>
