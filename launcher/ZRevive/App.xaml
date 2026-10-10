@@ -111,13 +111,13 @@
       <Setter Property="BorderBrush" Value="{StaticResource Line2}"/>
       <Setter Property="CaretBrush" Value="{StaticResource RedHi}"/>
       <Setter Property="SelectionBrush" Value="{StaticResource Red}"/>
-      <Setter Property="Padding" Value="10,8"/>
+      <Setter Property="Padding" Value="8,7"/>
       <Setter Property="FontSize" Value="13"/>
       <Setter Property="Template">
         <Setter.Value>
           <ControlTemplate TargetType="TextBox">
             <Border x:Name="b" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="1" CornerRadius="2">
-              <ScrollViewer x:Name="PART_ContentHost" Margin="{TemplateBinding Padding}"/>
+              <ScrollViewer x:Name="PART_ContentHost" Margin="0" VerticalAlignment="Center"/>
             </Border>
             <ControlTemplate.Triggers>
               <Trigger Property="IsMouseOver" Value="True">
@@ -141,6 +141,7 @@
       <Setter Property="FontWeight" Value="SemiBold"/>
       <Setter Property="FontSize" Value="14"/>
       <Setter Property="Cursor" Value="Hand"/>
+      <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
       <Setter Property="Template">
         <Setter.Value>
           <ControlTemplate TargetType="Button">
@@ -154,6 +155,9 @@
               </Trigger>
               <Trigger Property="IsPressed" Value="True">
                 <Setter TargetName="b" Property="Background" Value="{StaticResource Ink}"/>
+              </Trigger>
+              <Trigger Property="IsKeyboardFocused" Value="True">
+                <Setter TargetName="b" Property="BorderBrush" Value="{StaticResource Bone}"/>
               </Trigger>
               <Trigger Property="IsEnabled" Value="False">
                 <Setter TargetName="b" Property="Opacity" Value="0.45"/>
@@ -182,6 +186,9 @@
               </Trigger>
               <Trigger Property="IsPressed" Value="True">
                 <Setter TargetName="b" Property="Background" Value="{StaticResource Red}"/>
+              </Trigger>
+              <Trigger Property="IsKeyboardFocused" Value="True">
+                <Setter TargetName="b" Property="BorderBrush" Value="{StaticResource Bone}"/>
               </Trigger>
               <Trigger Property="IsEnabled" Value="False">
                 <Setter TargetName="b" Property="Opacity" Value="0.45"/>
@@ -222,6 +229,10 @@
             <ControlTemplate.Triggers>
               <Trigger Property="IsMouseOver" Value="True">
                 <Setter TargetName="glow" Property="Opacity" Value="0.55"/>
+              </Trigger>
+              <Trigger Property="IsKeyboardFocused" Value="True">
+                <Setter TargetName="b" Property="BorderBrush" Value="White"/>
+                <Setter TargetName="b" Property="BorderThickness" Value="2"/>
               </Trigger>
               <Trigger Property="IsPressed" Value="True">
                 <Setter TargetName="b" Property="RenderTransform">
@@ -313,6 +324,7 @@
       <Setter Property="Foreground" Value="{StaticResource Ash}"/>
       <Setter Property="Cursor" Value="Hand"/>
       <Setter Property="FontSize" Value="13"/>
+      <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
       <Setter Property="Template">
         <Setter.Value>
           <ControlTemplate TargetType="CheckBox">
@@ -332,6 +344,10 @@
               </Trigger>
               <Trigger Property="IsMouseOver" Value="True">
                 <Setter TargetName="box" Property="BorderBrush" Value="{StaticResource Ash}"/>
+                <Setter Property="Foreground" Value="{StaticResource Bone}"/>
+              </Trigger>
+              <Trigger Property="IsKeyboardFocused" Value="True">
+                <Setter TargetName="box" Property="BorderBrush" Value="{StaticResource Bone}"/>
                 <Setter Property="Foreground" Value="{StaticResource Bone}"/>
               </Trigger>
             </ControlTemplate.Triggers>

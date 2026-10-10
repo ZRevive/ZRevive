@@ -134,7 +134,7 @@
                     </StackPanel>
                     <StackPanel>
                       <TextBlock x:Name="StatSurvivors" Text="—" Style="{StaticResource StatValue}"/>
-                      <TextBlock Text="SURVIVORS" Style="{StaticResource StatCaption}"/>
+                      <TextBlock Text="REGISTERED" Style="{StaticResource StatCaption}" ToolTip="Accounts registered on ZRevive"/>
                     </StackPanel>
                   </UniformGrid>
                 </Grid>
@@ -275,7 +275,9 @@
             </StackPanel>
 
             <!-- Settings (always visible) -->
-            <StackPanel Grid.Row="1" Margin="0,26,0,0">
+            <!-- Scrolls instead of sliding under the bottom buttons when the window is short. -->
+            <ScrollViewer Grid.Row="1" Margin="0,26,0,14" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" Focusable="False">
+            <StackPanel Margin="0,0,10,0">
               <StackPanel Orientation="Horizontal">
                 <Border Background="{StaticResource Red}" Width="4" Height="16" Margin="0,0,10,0"/>
                 <TextBlock Text="SETTINGS" Style="{StaticResource SectionHead}"/>
@@ -337,6 +339,7 @@
               <CheckBox x:Name="DiscordBox" Content="Show Discord status" Margin="0,18,0,0"
                         ToolTip="Show what you're doing in ZRevive on your Discord profile"/>
             </StackPanel>
+            </ScrollViewer>
 
             <!-- Bottom actions -->
             <StackPanel Grid.Row="2">
@@ -346,8 +349,8 @@
                   <ColumnDefinition Width="8"/>
                   <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <Button x:Name="AdminBtn" Content="STAFF PANEL" Style="{StaticResource Btn}" Click="Admin_Click"/>
-                <Button Grid.Column="2" Content="SIGN OUT" Style="{StaticResource Btn}" Click="SignOut_Click"/>
+                <Button x:Name="AdminBtn" Content="STAFF PANEL" Style="{StaticResource Btn}" Padding="10,8" FontSize="12" Click="Admin_Click"/>
+                <Button Grid.Column="2" Content="SIGN OUT" Style="{StaticResource Btn}" Padding="10,8" FontSize="12" Click="SignOut_Click"/>
               </Grid>
             </StackPanel>
           </Grid>
