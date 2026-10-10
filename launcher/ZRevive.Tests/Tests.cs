@@ -81,6 +81,7 @@ static class Program
         await ApplyTests();
         await UpdateTests.RunAll();
         ModeTests.RunAll();
+        await KeyPromptTests.RunAll();
         return T.Finish();
     }
 

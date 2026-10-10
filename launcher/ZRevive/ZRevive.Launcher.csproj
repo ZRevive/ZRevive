@@ -26,7 +26,8 @@
          reading UPDATE could start the game instead of updating. -->
     <!-- 0.4.12 was asset-only (payloads moved off the repo onto the release). 0.4.13 is a real
          launcher: layout polish (scrolling settings, compact inputs, REGISTERED label, focus states). -->
-    <Version>0.4.13</Version>
+    <!-- 0.4.14: prompts show the player's own Interact key (Install\KeyPrompts.cs). -->
+    <Version>0.4.14</Version>
     <Product>ZRevive Launcher</Product>
     <Company>ZRevive</Company>
     <!-- Shown in Explorer's Properties and in the SmartScreen prompt. The exe is not code

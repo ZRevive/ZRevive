@@ -46,6 +46,8 @@
     <Compile Include="..\ZRevive\Settings.cs" Link="Settings.cs" />
     <Compile Include="..\ZRevive\Install\LauncherUpdate.cs" Link="Install\LauncherUpdate.cs" />
     <Compile Include="ModeTests.cs" />
+    <Compile Include="..\ZRevive\Install\KeyPrompts.cs" Link="Install\KeyPrompts.cs" />
+    <Compile Include="KeyPromptTests.cs" />
   </ItemGroup>
 
 </Project>

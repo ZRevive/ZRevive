@@ -88,6 +88,9 @@ public sealed class InstallService
         // for? If not, its game content is left alone instead of being overwritten with files meant
         // for a different tree - see ForeignBaseline for what that cost us.
         var foreign = ForeignBaseline.Detect(manifest, installFolder);
+        // Per-player key prompts in the locale are not damage (KeyPromptLocale): accepted while they
+        // were made from exactly the bytes this release expects.
+        var keyed = KeyedLocaleState.Load(installFolder);
 
         foreach (var entry in manifest.Entries)
         {
@@ -137,7 +140,11 @@ public sealed class InstallService
             var wantSize = entry.InstalledSize;
             var wantSha = entry.InstalledSha256;
 
-            if (!info.Exists)
+            if (info.Exists && keyed.Accepts(entry.TargetPath, wantSha, full, hashAlways: true))
+            {
+                results.Add(new EntryStatus(entry, EntryVerdict.Ok, "player's key prompts"));
+            }
+            else if (!info.Exists)
             {
                 results.Add(new EntryStatus(entry, EntryVerdict.Missing, "not installed"));
             }
@@ -194,6 +201,14 @@ public sealed class InstallService
         //
         // An append patch states the exact size and hash of the file it applies to, so checking all
         // of them up front is a cheap and reliable "is this the right install" test.
+        // Put the release's own locale bytes back first: an append patch must see the exact base it
+        // was built for, and a keyed file is neither base nor result. Re-keyed at the next PLAY.
+        try { KeyPromptLocale.RestoreAll(installFolder); }
+        catch (Exception ex) when (ex is IOException or UnauthorizedAccessException)
+        {
+            throw new IOException("Couldn't restore the locale files (is the game running? close it and try again): " + ex.Message, ex);
+        }
+
         var mismatched = new List<string>();
         foreach (var e in report.Broken.Select(b => b.Entry).Where(e => e.Kind == EntryKind.Append))
         {

@@ -93,6 +93,10 @@ public static class QuickVerifier
         var suspect = new List<EntryStatus>();
         var hashed = 0;
         var noPrints = prints.Files.Count == 0;
+        // Locale files re-keyed with the player's Interact key (KeyPromptLocale) differ from the
+        // release by design. Without this they read as WrongHash/WrongSize, which blocks PLAY and
+        // re-downloads them, only for the next launch to re-key them again - forever.
+        var keyed = KeyedLocaleState.Load(installFolder);
 
         foreach (var entry in manifest.Entries)
         {
@@ -117,6 +121,8 @@ public static class QuickVerifier
                 suspect.Add(new EntryStatus(entry, EntryVerdict.Missing, "not installed"));
                 continue;
             }
+            if (keyed.Accepts(entry.TargetPath, entry.InstalledSha256, full, hashAlways: entry.Critical))
+                continue;
             if (info.Length != entry.Size)
             {
                 suspect.Add(new EntryStatus(entry, EntryVerdict.WrongSize, $"{info.Length} bytes, expected {entry.Size}"));

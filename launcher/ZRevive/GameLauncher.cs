@@ -163,12 +163,19 @@ public static class GameLauncher
         WriteReplacing(Path.Combine(folder, "steam_persona_name.txt"), (login.Name ?? "Player") + "\n");
         PrepareClientSettings(folder);
 
-        var loginServer = login.LoginServer ?? "127.0.0.1:1115";
-        var host = loginServer.Split(':')[0];
-        PointClientConfigAt(folder, loginServer, host);
         var logs = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
             "ZRevive", "logs");
         Directory.CreateDirectory(logs);
+
+        // The prompts ("[E] AR-15", Enter Vehicle, doors) show the player's own Interact key. The
+        // client cannot fill [*key*] itself, so the locale is re-keyed here from InputProfile_User.xml;
+        // a no-op when the key has not changed. Never blocks the launch (KeyPromptLocale).
+        var keyNote = Install.KeyPromptLocale.PrepareForLaunch(folder);
+        try { File.AppendAllText(Path.Combine(logs, "launcher-keyprompts.log"), $"{DateTime.Now:u} {keyNote}\n"); } catch { }
+
+        var loginServer = login.LoginServer ?? "127.0.0.1:1115";
+        var host = loginServer.Split(':')[0];
+        PointClientConfigAt(folder, loginServer, host);
 
         var psi = new ProcessStartInfo(Path.Combine(folder, "H1Z1.exe"))
         {

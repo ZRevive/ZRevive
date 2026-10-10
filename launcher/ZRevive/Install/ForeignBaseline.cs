@@ -48,6 +48,9 @@ public static class ForeignBaseline
     /// </summary>
     public static string? Detect(ReleaseManifest manifest, string installFolder)
     {
+        // A locale carrying the player's key prompts measures differently from the release; size it
+        // as the release's file it was made from, or a rebind would read as a foreign install.
+        var keyed = KeyedLocaleState.Load(installFolder);
         foreach (var e in manifest.Entries)
         {
             if (!IsGameContent(e.TargetPath)) continue;
@@ -56,7 +59,7 @@ public static class ForeignBaseline
             if (!File.Exists(p)) continue;
 
             long len;
-            try { len = new FileInfo(p).Length; }
+            try { len = keyed.BaseLength(e.TargetPath, new FileInfo(p).Length); }
             catch { continue; }
 
             // An append patch states the exact size of the file it applies to. A size that is
